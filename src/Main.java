@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main
 {
     public static int velikostPole = 10;
+    public static int pocetZnakuPoSobe = 4;
     public static char hrac1 = 'X';
     public static char hrac2 = 'O';
     public static Scanner sc = new Scanner(System.in);
@@ -20,19 +21,19 @@ public class Main
             }
         }
 
-        do
+        do //Game loop
         {
             vypsatPole(pole);
 
             bod = zadatBod(1); //Zadání bodu hráče 1
 
-            pole[bod[1] - 1][bod[0] - 1] = 1; //Uložení pozice bodu hráče 1 do pole
+            pole[bod[0] - 1][bod[1] - 1] = 1; //Uložení pozice bodu hráče 1 do pole
 
             vypsatPole(pole);
 
             bod = zadatBod(2); //Zadání bodu hráče 2
 
-            pole[bod[1] - 1][bod[0] - 1] = 2; //Uložení pozice bodu hráče 2 do pole
+            pole[bod[0] - 1][bod[1] - 1] = 2; //Uložení pozice bodu hráče 2 do pole
 
             clearScreen();
 
@@ -83,25 +84,39 @@ public class Main
 
         System.out.print("Pozice X: ");
         do {
-            bod[0] = Integer.parseInt(sc.nextLine());
-            if(bod[0] < 0 || bod[0] > velikostPole)
+            bod[1] = Integer.parseInt(sc.nextLine());
+            if(bod[1] < 0 || bod[1] > velikostPole)
             {
                 System.out.println("Pozice X je zadána chybně. Zadejte znovu.");
             }
         }
-        while(bod[0] < 0 || bod[0] > velikostPole);
+        while(bod[1] < 0 || bod[1] > velikostPole);
 
 
         System.out.print("Pozice Y: ");
         do {
-            bod[1] = Integer.parseInt(sc.nextLine());
-            if(bod[1] < 0 || bod[1] > velikostPole)
+            bod[0] = Integer.parseInt(sc.nextLine());
+            if(bod[0] < 0 || bod[0] > velikostPole)
             {
                 System.out.println("Pozice Y je zadána chybně. Zadejte znovu.");
             }
         }
-        while(bod[1] < 0 || bod[1] > velikostPole);
+        while(bod[0] < 0 || bod[0] > velikostPole);
 
         return bod;
+    }
+    public static int checkVyhra(int[][] pole, int[] bod, int hrac)
+    {
+        int znakyPoSobe = 0;
+
+        for(int X = bod[0] - 1; X >= 0; X--) //TODO
+        {
+            if (pole[bod[1]][X] == hrac)
+            {
+
+            }
+        }
+
+        return 0;
     }
 }
